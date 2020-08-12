@@ -30,13 +30,13 @@ function CreateTodo(props){
         console.log(`Todo Completed: ${completed}`);
 
         const newTodo = {
-            description: description,
-            responsible: responsible,
-            priority: priority,
-            completed: completed
+            "todo_description": description,
+            "todo_responsible": responsible,
+            "todo_priority": priority,
+            "todo_completed": completed
         }
 
-        axios.post('http://localhost:4000/todo/add', newTodo)
+        axios.post('http://localhost:4000/todo/add/', newTodo)
             .then(res => console.log(res.data));
 
         setDescription('');

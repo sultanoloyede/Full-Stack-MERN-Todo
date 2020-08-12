@@ -17,7 +17,7 @@ function App() {
             <a className= "navbar-brand" href="" target="_blank">
               <img src={logo} width = "30" alt=""/>
             </a>
-            <Link to="/" classname="navbar-brand">Todo App</Link>
+            <Link to="/" className="navbar-brand">Todo App</Link>
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">

@@ -4,9 +4,9 @@ import axios from 'axios';
 
 const Todo = props => (
     <tr>
-        <td>{props.description}</td>
-        <td>{props.responsible}</td>
-        <td>{props.priority}</td>
+        <td>{props.todo_description}</td>
+        <td>{props.todo_responsible}</td>
+        <td>{props.todo_priority}</td>
         <td>
             <Link to={"/edit/" + props.todo._id}>Edit</Link>
         </td>
@@ -47,7 +47,7 @@ function Todolist(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    { todoList() }
+                    { todos && todoList(todos) }
                 </tbody>
             </table>
         </div>
