@@ -1,14 +1,14 @@
-import React, {Component, useState, useEffect} from 'react';
+import React, {Component, useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Todo = props => (
     <tr>
-        <td>{props.todo_description}</td>
-        <td>{props.todo_responsible}</td>
-        <td>{props.todo_priority}</td>
+        <td>{props.todo.todo_description}</td>
+        <td>{props.todo.todo_responsible}</td>
+        <td>{props.todo.todo_priority}</td>
         <td>
-            <Link to={"/edit/" + props.todo._id}>Edit</Link>
+            <Link to={"/edit/"+props.todo._id}>Edit</Link>
         </td>
     </tr>
 )
@@ -21,23 +21,22 @@ function Todolist(props) {
         axios.get('http://localhost:4000/todos/')
             .then(response => {
                 setTodos(response.data);
-                console.log('mounted!');
             })
-            .catch(function(error){
+            .catch(function (error) {
                 console.log(error);
             })
     },[])
 
-    const todoList = (todos) => {
-        todos.map(function(currentTodo, i){
-            return <Todo todo = {currentTodo} key={i} />;
+    const todoList = () => {
+        return todos.map(function(currentTodo, i) {
+            return <Todo todo={currentTodo} key={i} />;
         });
     }
 
-    return(
+    return (
         <div>
             <h3>Todos List</h3>
-            <table className="table table-stripped" style={{marginTop: 20}}>
+            <table className="table table-striped" style={{ marginTop: 20 }}>
                 <thead>
                     <tr>
                         <th>Description</th>
@@ -47,11 +46,12 @@ function Todolist(props) {
                     </tr>
                 </thead>
                 <tbody>
-                    { todos && todoList(todos) }
+                    { todoList() }
                 </tbody>
             </table>
         </div>
     )
+
 }
 
 export default Todolist;

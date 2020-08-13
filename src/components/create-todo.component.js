@@ -36,7 +36,7 @@ function CreateTodo(props){
             "todo_completed": completed
         }
 
-        axios.post('http://localhost:4000/todo/add/', newTodo)
+        axios.post('http://localhost:4000/todos/add/', newTodo)
             .then(res => console.log(res.data));
 
         setDescription('');
